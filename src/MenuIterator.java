@@ -1,7 +1,22 @@
-public interface MenuIterator {
-    // returns true if items of appropriate type left in list
-    public boolean hasNext();
+import java.util.ArrayList;
 
-    // returns current item and advances to next item
-    public MenuItem next();
+public class MenuIterator implements Iterator{
+    ArrayList<MenuItem> items;
+    int position = 0;
+
+    public MenuIterator(ArrayList<MenuItem> items){
+        this.items = items;
+    }
+
+    @Override
+    public boolean hasNext() {
+        return position < items.size();
+    }
+
+    @Override
+    public MenuItem next() {
+        MenuItem current = items.get(position);
+        position++;
+        return current;
+    }
 }
